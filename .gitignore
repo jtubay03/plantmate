@@ -1,0 +1,103 @@
+# Django Backend
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+backend-env/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.sqlite3
+*.sqlite3-journal
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Django logs
+*.log
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Python testing
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# React Native
+frontend/node_modules/
+frontend/.expo/
+frontend/npm-debug.*
+frontend/*.jks
+frontend/*.p8
+frontend/*.p12
+frontend/*.key
+frontend/*.mobileprovision
+frontend/*.orig.*
+frontend/web-build/
+frontend/dist/
+frontend/android/app/debug
+frontend/android/app/release
+
+# React Native testing
+frontend/.jest/
+frontend/__tests__/coverage/
+
+# OS specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDEs and editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+*.sublime-project
+
+# Build directories
+build/
+dist/
+tmp/
+out-tsc/
+.gradle/
+
+# Logs and databases
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+.yarn/
