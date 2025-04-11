@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const routes = require('./routes'); // This imports the index.js from routes folder
+const routes = require('./routes');
+const { initCronJobs } = require('./jobs/cronScheduler').default;
 
 // Load environment variables
 dotenv.config();
@@ -24,6 +25,9 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ message: 'Something went wrong!' });
 });
+
+// Initialize cron jobs
+const cronJobs = initCronJobs();
 
 // Start server
 app.listen(port, () => {
