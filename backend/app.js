@@ -1,7 +1,8 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const routes = require('./routes');
-const { initCronJobs } = require('./jobs/cronScheduler').default;
+const { initCronJobs } = require('./jobs/cronScheduler');
+
 
 // Load environment variables
 dotenv.config();

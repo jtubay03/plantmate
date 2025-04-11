@@ -33,3 +33,4 @@ services:
       - ./db-schema.sql:/docker-entrypoint-initdb.d/db-schema.sql
 volumes:
   mysql-data:
+  node_modules_volume:

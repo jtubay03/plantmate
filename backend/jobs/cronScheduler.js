@@ -1,6 +1,7 @@
 
 // backend/jobs/cronScheduler.js
 const cron = require('node-cron');
+
 const plantScraper = require('./plantScraper');
 
 /**
@@ -9,7 +10,7 @@ const plantScraper = require('./plantScraper');
 function initCronJobs() {
   // Schedule the plant scraper to run once a week (Sunday at 3:00 AM)
   // Cron format: second(optional) minute hour day-of-month month day-of-week
-  const plantScraperJob = cron.schedule('0 3 * * 0', async () => {
+  const plantScraperJob = cron.schedule('* * * * *', async () => {
     console.log('🕒 Running scheduled plant scraper job...');
     try {
       const result = await plantScraper.scrapePlants();
