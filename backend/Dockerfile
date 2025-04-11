@@ -1,18 +1,21 @@
-FROM python:3.11-slim
 
-# Set environment variables
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
+FROM node:18-alpine
 
-# Set work directory
 WORKDIR /app
 
 # Install dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY package*.json ./
+RUN npm install
 
-# Copy project
+# Install wait-for-it script
+RUN apk add --no-cache bash
+COPY wait-for-it.sh /usr/local/bin/wait-for-it.sh
+RUN chmod +x /usr/local/bin/wait-for-it.sh
+
+# Copy app source
 COPY . .
 
-# Run the server
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+EXPOSE 3000
+
+# Use wait-for-it script to wait for MySQL before starting the app
+CMD ["sh", "-c", "wait-for-it.sh mysql:3306 -t 30 -- npm start"]

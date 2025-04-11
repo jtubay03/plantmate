@@ -101,3 +101,6 @@ yarn-error.log*
 
 # Dependency directories
 .yarn/
+
+backend/node_modules
+backend/.env

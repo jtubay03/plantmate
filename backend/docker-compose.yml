@@ -1,18 +1,35 @@
 version: '3'
 
 services:
-  backend:
+  app:
     build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - DB_HOST=mysql
+      - DB_USER=root
+      - DB_PASSWORD=1234
+      - DB_NAME=plantmate
+      - JWT_SECRET=your_secret_key_for_development_only
     volumes:
       - .:/app
+      - /app/node_modules
+    depends_on:
+      - mysql
+    command: npm start
+
+  mysql:
+    image: mysql:8.0
     ports:
-      - "8000:8000"
+      - "3306:3306"
     environment:
-      - DEBUG=1
-      - SECRET_KEY=dev-secret-key
-      - DATABASE_URL=sqlite:///db.sqlite3
-    command: python manage.py runserver 0.0.0.0:8000
-  redis:
-    image: redis:6-alpine
-    ports:
-      - "6379:6379"
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_DATABASE=plantmate
+    command: --default-authentication-plugin=mysql_native_password  # Use the older auth method
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./db-schema.sql:/docker-entrypoint-initdb.d/db-schema.sql
+volumes:
+  mysql-data:
