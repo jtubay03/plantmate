@@ -4,7 +4,6 @@ const axios = require('axios');
 const fs = require('fs').promises;
 const path = require('path');
 
-const API_KEY = 'sk-19Jn6801a6ea766be9868';
 const BASE_URL = 'https://perenual.com/api/v2';
 
 /**
